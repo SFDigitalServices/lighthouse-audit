@@ -5,6 +5,3 @@ ci:
       - https://sf.gov/feedback
   assert:
     preset: lighthouse:recommended
-  upload:
-    target: lhci
-    serverBaseUrl: https://lighthouse-ci-sfgov.herokuapp.com
