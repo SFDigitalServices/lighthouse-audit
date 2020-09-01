@@ -1,7 +1,11 @@
 ci:
   collect:
     url:
-      - https://sf.gov
+      - https://sf.gov/
       - https://sf.gov/feedback
+      - https://sfdigitalservices.github.io/
+      - https://sfdigitalservices.github.io/strategy/
+      - https://sfdigitalservices.github.io/joinus/
+      - https://sfdigitalservices.github.io/ourteam/
   assert:
     preset: lighthouse:recommended
