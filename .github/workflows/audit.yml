@@ -4,6 +4,7 @@ on:
     paths-ignore:
       - '*.md'
       - 'package*.json'
+      - '.gitignore'
   schedule:
     # every day at midnight (GMT)
     - cron: '0 0 * * *'
