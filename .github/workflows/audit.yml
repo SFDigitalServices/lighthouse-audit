@@ -12,8 +12,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: treosh/lighthouse-ci-action@v3
         with:
+          serverToken: ${{ secrets.LHCI_BUILD_TOKEN }}
           serverBaseUrl: https://lighthouse-ci-sfgov.herokuapp.com
         env:
-          LHCI_TOKEN: ${{ secrets.LHCI_BUILD_TOKEN }}
           LHCI_GITHUB_TOKEN: ${{ github.token }}
 
