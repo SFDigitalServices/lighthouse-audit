@@ -1,6 +1,7 @@
 name: Lighthouse audit
 on:
-  push: {} # every push
+  push:
+    paths-ignore: '*.md'
   schedule:
     # every day at midnight (GMT)
     - cron: '0 0 * * *'
