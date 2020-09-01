@@ -1,0 +1,10 @@
+ci:
+  collect:
+    url:
+      - https://sf.gov
+      - https://sf.gov/feedback
+  assert:
+    preset: lighthouse:recommended
+  upload:
+    target: lhci
+    serverBaseUrl: https://lighthouse-ci-sfgov.herokuapp.com

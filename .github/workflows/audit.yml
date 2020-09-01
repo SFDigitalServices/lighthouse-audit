@@ -1,0 +1,17 @@
+name: Lighthouse audit
+on:
+  push: {} # every push
+  schedule:
+    # every day at midnight (GMT)
+    - cron: '0 0 * * *'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: treosh/lighthouse-ci-action@v3
+        env:
+          LHCI_TOKEN: ${{ secrets.LHCI_BUILD_TOKEN }}
+          LHCI_GITHUB_TOKEN: ${{ github.token }}
+
