@@ -14,12 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: echo "::set-env name=LHCI_BUILD_CONTEXT__CURRENT_HASH::$(date +%Y-%m-%d)@$(git rev-parse --short HEAD)"
-      - run: echo "LHCI_BUILD_CONTEXT__CURRENT_HASH = '$LHCI_BUILD_CONTEXT__CURRENT_HASH'"
+      - uses: ./.github/actions/setup-lhci
       - uses: treosh/lighthouse-ci-action@v3
+        env:
+          LHCI_GITHUB_TOKEN: ${{ github.token }}
         with:
           serverToken: ${{ secrets.LHCI_BUILD_TOKEN }}
           serverBaseUrl: https://lighthouse-ci-sfgov.herokuapp.com
-        env:
-          LHCI_GITHUB_TOKEN: ${{ github.token }}
 
