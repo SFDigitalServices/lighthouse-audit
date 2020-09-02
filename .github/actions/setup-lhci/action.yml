@@ -1,0 +1,10 @@
+name: Set up Lighthouse CI environment
+
+branding:
+  icon: settings
+  color: blue
+
+runs:
+  using: ubuntu-latest
+  main: main.sh
+
