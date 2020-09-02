@@ -14,10 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - uses: echo "::set-env name=LHCI_GITHUB_TOKEN::${{ github.token }}"
+        if: github.event_name == 'push'
+
       - uses: ./.github/actions/setup-lhci
+        if: github.event_name == 'schedule'
+
       - uses: treosh/lighthouse-ci-action@v3
-        env:
-          LHCI_GITHUB_TOKEN: ${{ github.token }}
         with:
           serverToken: ${{ secrets.LHCI_BUILD_TOKEN }}
           serverBaseUrl: https://lighthouse-ci-sfgov.herokuapp.com
