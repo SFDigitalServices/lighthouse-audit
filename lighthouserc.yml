@@ -7,5 +7,6 @@ ci:
       - https://sfdigitalservices.github.io/strategy/
       - https://sfdigitalservices.github.io/joinus/
       - https://sfdigitalservices.github.io/ourteam/
-  assert:
-    preset: lighthouse:recommended
+
+  upload:
+    uploadUrlMap: true
