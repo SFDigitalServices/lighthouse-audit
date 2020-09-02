@@ -5,6 +5,8 @@ branding:
   color: blue
 
 runs:
-  using: ubuntu-latest
-  main: main.sh
+  using: composite
+  steps:
+    - run: $GITHUB_ACTION_PATH/main.sh
+      shell: bash
 
