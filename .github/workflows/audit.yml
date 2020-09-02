@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: echo "::set-env name=LHCI_BUILD_CONTEXT__CURRENT_HASH=$(date +%Y-%m-%d)@$(git rev-parse --short HEAD)"
+      - run: echo "LHCI_BUILD_CONTEXT__CURRENT_HASH = '$LHCI_BUILD_CONTEXT__CURRENT_HASH'"
       - uses: treosh/lighthouse-ci-action@v3
         with:
           serverToken: ${{ secrets.LHCI_BUILD_TOKEN }}
