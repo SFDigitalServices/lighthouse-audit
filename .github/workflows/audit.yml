@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: echo "::set-env name=LHCI_GITHUB_TOKEN::${{ github.token }}"
+      - run: echo "LHCI_GITHUB_TOKEN=${{ github.token }}" >> $GITHUB_ENV
         if: github.event_name == 'push'
 
       - uses: ./.github/actions/setup-lhci
