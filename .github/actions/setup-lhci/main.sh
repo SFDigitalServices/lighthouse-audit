@@ -2,15 +2,13 @@
 TODAY=$(date +%Y-%m-%d)
 YESTERDAY=$(date -v 1d +%Y-%m-%d)
 SHA=$(git rev-parse --short HEAD)
-
-function ctx() {
-  echo "::set-env name=LHCI_BUILD_CONTEXT__$1::$2"
-}
-
-ctx CURRENT_HASH "$SHA@$TODAY"
-ctx COMMIT_TIME "$TODAY"
-ctx CURRENT_BRANCH "$(git symbolic-ref --short HEAD)"
-ctx COMMIT_MESSAGE "Scheduled run: $TODAY"
-ctx AUTHOR "Actions <noreply@github.com>"
-ctx AVATAR_URL "https://avatars0.githubusercontent.com/in/15368?s=40&v=4"
-ctx ANCESTOR_HASH "$SHA@$YESTERDAY"
+REF=$(git symbolic-ref --short HEAD)
+(
+  echo "CURRENT_HASH=$SHA@$TODAY"
+  echo "COMMIT_TIME=$TODAY"
+  echo "CURRENT_BRANCH=$REF"
+  echo "COMMIT_MESSAGE=Scheduled run: $TODAY"
+  echo "AUTHOR=Actions <noreply@github.com>"
+  echo "AVATAR_URL=https://avatars0.githubusercontent.com/in/15368?s=40&v=4"
+  echo "ANCESTOR_HASH=$SHA@$YESTERDAY"
+) >> $GITHUB_ENV
